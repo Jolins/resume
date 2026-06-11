@@ -1,0 +1,1025 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>筑梦红研｜红色党建研学平台产品策划与运营方案</title>
+  <meta name="description" content="面向产品/运营岗位展示的红色党建研学平台项目作品集页，聚焦用户洞察、产品路径、运营闭环与指标意识。">
+  <style>
+    :root {
+      --red-900: #6f1015;
+      --red-700: #b91f2c;
+      --red-600: #d63b38;
+      --gold-500: #d5a23b;
+      --teal-700: #146c68;
+      --ink-900: #171717;
+      --ink-700: #3f3f46;
+      --ink-500: #71717a;
+      --line: #e8e0d4;
+      --paper: #fffdf9;
+      --soft: #f7f2ea;
+      --white: #ffffff;
+      --shadow: 0 22px 60px rgba(45, 22, 18, .13);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink-900);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.6;
+      letter-spacing: 0;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(111, 16, 21, .12);
+      background: rgba(255, 253, 249, .88);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 14px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+      font-weight: 800;
+      color: var(--red-900);
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--red-700);
+      color: var(--white);
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      color: var(--ink-700);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    .nav-links a {
+      border-radius: 6px;
+      padding: 8px 10px;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: var(--red-900);
+      background: rgba(185, 31, 44, .08);
+      outline: none;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 70svh;
+      overflow: hidden;
+      color: var(--white);
+      background:
+        linear-gradient(90deg, rgba(53, 8, 11, .94), rgba(111, 16, 21, .84) 43%, rgba(111, 16, 21, .28)),
+        url("assets/hero-ribbon.jpeg") center / cover no-repeat;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 160px;
+      background: linear-gradient(180deg, rgba(255,255,255,0), var(--paper));
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(280px, .72fr);
+      align-items: center;
+      gap: 56px;
+      width: min(1160px, calc(100% - 40px));
+      min-height: 70svh;
+      margin: 0 auto;
+      padding: 38px 0 36px;
+    }
+
+    .hero-inner > * {
+      min-width: 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      color: #ffe8b0;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 2px;
+      border-radius: 999px;
+      background: #ffe8b0;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      margin-bottom: 18px;
+      max-width: 740px;
+      font-size: 50px;
+      line-height: 1.12;
+      letter-spacing: 0;
+    }
+
+    .h1-line {
+      display: block;
+    }
+
+    .hero-lead {
+      max-width: 720px;
+      margin-bottom: 26px;
+      color: rgba(255, 255, 255, .88);
+      font-size: 19px;
+    }
+
+    .role-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 32px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .role-list li {
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 999px;
+      padding: 8px 12px;
+      background: rgba(255, 255, 255, .08);
+      color: rgba(255, 255, 255, .94);
+      font-size: 14px;
+      backdrop-filter: blur(12px);
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      max-width: 760px;
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, .08);
+      backdrop-filter: blur(16px);
+    }
+
+    .hero-meta div {
+      min-width: 0;
+      padding: 16px 18px;
+      border-right: 1px solid rgba(255, 255, 255, .16);
+    }
+
+    .hero-meta div:last-child {
+      border-right: 0;
+    }
+
+    .meta-label {
+      display: block;
+      margin-bottom: 5px;
+      color: rgba(255, 255, 255, .58);
+      font-size: 12px;
+    }
+
+    .meta-value {
+      display: block;
+      color: var(--white);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .phone-wrap {
+      justify-self: end;
+      width: min(220px, 100%);
+      filter: drop-shadow(0 32px 52px rgba(0, 0, 0, .34));
+    }
+
+    .phone-frame {
+      overflow: hidden;
+      border: 10px solid #120b0c;
+      border-radius: 38px;
+      background: #120b0c;
+    }
+
+    .phone-frame img {
+      width: 100%;
+      border-radius: 26px;
+    }
+
+    section {
+      position: relative;
+      padding: 86px 0;
+    }
+
+    .band {
+      background: var(--soft);
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, .86fr) minmax(280px, .64fr);
+      align-items: end;
+      gap: 46px;
+      margin-bottom: 38px;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      color: var(--red-700);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .kicker::before {
+      content: "";
+      width: 20px;
+      height: 2px;
+      border-radius: 999px;
+      background: var(--gold-500);
+    }
+
+    h2 {
+      margin-bottom: 0;
+      font-size: 34px;
+      line-height: 1.22;
+      letter-spacing: 0;
+    }
+
+    .section-note {
+      margin-bottom: 0;
+      color: var(--ink-700);
+      font-size: 16px;
+    }
+
+    .insight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .insight-card,
+    .value-card,
+    .ops-card,
+    .metric-card,
+    .reflection-card,
+    .tech-card {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: 0 16px 36px rgba(45, 22, 18, .06);
+    }
+
+    .insight-card {
+      padding: 24px;
+    }
+
+    .card-index {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      margin-bottom: 18px;
+      border-radius: 8px;
+      background: rgba(185, 31, 44, .1);
+      color: var(--red-700);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 21px;
+      line-height: 1.32;
+    }
+
+    .insight-card p,
+    .value-card p,
+    .ops-card p,
+    .reflection-card p,
+    .tech-card p {
+      margin-bottom: 0;
+      color: var(--ink-700);
+      font-size: 15px;
+    }
+
+    .journey-layout {
+      display: grid;
+      grid-template-columns: minmax(0, .82fr) minmax(300px, .68fr);
+      align-items: center;
+      gap: 48px;
+    }
+
+    .journey {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .step {
+      min-height: 132px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 20px;
+      background: var(--white);
+      box-shadow: 0 16px 36px rgba(45, 22, 18, .06);
+    }
+
+    .step-number {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--gold-500);
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .step strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 18px;
+    }
+
+    .step span {
+      color: var(--ink-500);
+      font-size: 14px;
+    }
+
+    .journey-summary {
+      padding: 0 4px;
+    }
+
+    .journey-summary p {
+      margin-bottom: 24px;
+      color: var(--ink-700);
+    }
+
+    .stage-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .stage-list li {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      border-bottom: 1px solid var(--line);
+      padding: 12px 0;
+      color: var(--ink-700);
+      font-size: 15px;
+    }
+
+    .stage-list strong {
+      color: var(--red-900);
+      white-space: nowrap;
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .value-card {
+      padding: 20px;
+      min-height: 222px;
+    }
+
+    .value-card h3 {
+      margin-bottom: 12px;
+      color: var(--red-900);
+      font-size: 19px;
+    }
+
+    .audience {
+      display: inline-block;
+      margin-bottom: 14px;
+      border-radius: 999px;
+      padding: 5px 9px;
+      background: rgba(20, 108, 104, .1);
+      color: var(--teal-700);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .ops-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .ops-card {
+      padding: 26px;
+      border-top: 4px solid var(--red-700);
+    }
+
+    .ops-card:nth-child(2) {
+      border-top-color: var(--gold-500);
+    }
+
+    .ops-card:nth-child(3) {
+      border-top-color: var(--teal-700);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .metric-card {
+      padding: 18px;
+      background: linear-gradient(180deg, #fff, #fff9f4);
+    }
+
+    .metric-card h3 {
+      margin-bottom: 10px;
+      font-size: 17px;
+      color: var(--red-900);
+    }
+
+    .metric-card p {
+      margin: 0;
+      color: var(--ink-700);
+      font-size: 14px;
+    }
+
+    .proof-layout {
+      display: grid;
+      grid-template-columns: minmax(280px, .56fr) minmax(0, .94fr);
+      align-items: center;
+      gap: 42px;
+    }
+
+    .visual-panel {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .visual-panel img {
+      width: 100%;
+    }
+
+    .reflection-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .reflection-card {
+      padding: 24px;
+    }
+
+    .reflection-card ul {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding-left: 20px;
+      color: var(--ink-700);
+    }
+
+    .tech-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .tech-card {
+      padding: 20px;
+    }
+
+    .tech-card h3 {
+      font-size: 18px;
+      color: var(--red-900);
+    }
+
+    .closing {
+      padding: 62px 0;
+      color: var(--white);
+      background: var(--red-900);
+    }
+
+    .closing-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 36px;
+      width: min(1160px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .closing h2 {
+      margin-bottom: 10px;
+      font-size: 30px;
+    }
+
+    .closing p {
+      margin-bottom: 0;
+      color: rgba(255, 255, 255, .78);
+    }
+
+    .closing-badge {
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 8px;
+      padding: 18px 20px;
+      background: rgba(255, 255, 255, .08);
+      color: #ffe8b0;
+      font-weight: 900;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1040px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-inner,
+      .section-head,
+      .journey-layout,
+      .proof-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .phone-wrap {
+        justify-self: start;
+        width: 270px;
+      }
+
+      .value-grid,
+      .metrics-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 760px) {
+      .nav-inner,
+      .container,
+      .closing-inner,
+      .hero-inner {
+        width: min(1160px, calc(100% - 40px));
+      }
+
+      .hero,
+      .hero-inner {
+        min-height: auto;
+      }
+
+      .hero-inner {
+        padding: 46px 0 44px;
+        gap: 34px;
+      }
+
+      h1 {
+        font-size: 34px;
+        overflow-wrap: anywhere;
+      }
+
+      h2 {
+        font-size: 27px;
+      }
+
+      .hero-lead {
+        font-size: 17px;
+        overflow-wrap: anywhere;
+      }
+
+      .hero-meta,
+      .insight-grid,
+      .journey,
+      .ops-grid,
+      .reflection-grid,
+      .tech-strip,
+      .closing-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-meta div {
+        border-right: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, .16);
+      }
+
+      .hero-meta div:last-child {
+        border-bottom: 0;
+      }
+
+      section {
+        padding: 28px 0;
+      }
+
+      .value-grid,
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .phone-wrap {
+        display: none;
+      }
+
+      .closing-badge {
+        justify-self: start;
+      }
+    }
+
+    @media print {
+      .page-nav {
+        display: none;
+      }
+
+      body {
+        background: #fff;
+      }
+
+      .hero {
+        min-height: auto;
+        color: #111;
+        background: #fff;
+      }
+
+      .hero::after {
+        display: none;
+      }
+
+      .hero-inner {
+        min-height: auto;
+        padding: 24px 0;
+      }
+
+      .role-list li,
+      .hero-meta,
+      .closing {
+        color: #111;
+        background: #fff;
+        border-color: #ddd;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="page-nav" aria-label="页面导航">
+    <div class="nav-inner">
+      <a class="brand" href="#top" aria-label="返回顶部">
+        <span class="brand-mark">红</span>
+        <span>筑梦红研作品集</span>
+      </a>
+      <div class="nav-links">
+        <a href="#insight">问题洞察</a>
+        <a href="#journey">产品路径</a>
+        <a href="#features">功能价值</a>
+        <a href="#operation">运营闭环</a>
+        <a href="#metrics">指标复盘</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-inner">
+      <div>
+        <p class="eyebrow">产品策划与运营方案</p>
+        <h1><span class="h1-line">筑梦红研</span><span class="h1-line">红色党建研学平台</span></h1>
+        <p class="hero-lead">围绕基层党组织研学活动中“找基地难、预约流程散、活动后留存弱”的问题，设计一个集基地展示、活动预约、学习内容与文创激励于一体的研学服务平台。</p>
+        <ul class="role-list" aria-label="能力标签">
+          <li>产品策划</li>
+          <li>用户路径设计</li>
+          <li>活动运营</li>
+          <li>平台运营</li>
+          <li>B 端供给运营</li>
+        </ul>
+        <div class="hero-meta" aria-label="项目信息">
+          <div>
+            <span class="meta-label">项目类型</span>
+            <span class="meta-value">校园竞赛 / 产品策划项目</span>
+          </div>
+          <div>
+            <span class="meta-label">目标用户</span>
+            <span class="meta-value">党组织 / 研学用户 / 红色基地</span>
+          </div>
+          <div>
+            <span class="meta-label">展示重点</span>
+            <span class="meta-value">需求拆解 / 运营闭环 / 指标意识</span>
+          </div>
+        </div>
+      </div>
+      <div class="phone-wrap" aria-label="移动端首页示意">
+        <div class="phone-frame">
+          <img src="assets/app-home.png" alt="筑梦红研移动端首页示意图">
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="insight">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker">01 用户与问题洞察</span>
+            <h2>从“研学组织者”和“基地服务方”两端拆解问题</h2>
+          </div>
+          <p class="section-note">这个项目不是单纯的旅游预约工具，而是一个典型的双边平台：用户需要更低决策成本，基地需要曝光和转化，平台需要形成稳定服务闭环。</p>
+        </div>
+        <div class="insight-grid">
+          <article class="insight-card">
+            <span class="card-index">A</span>
+            <h3>用户侧：找得到、约得上</h3>
+            <p>基层党组织和研学组织者面对基地信息分散、宣传口径不统一、预约流程割裂等问题，前期筛选和沟通成本偏高。</p>
+          </article>
+          <article class="insight-card">
+            <span class="card-index">B</span>
+            <h3>供给侧：被看见、能承接</h3>
+            <p>中小红色教育基地缺少稳定展示入口，活动、路线、服务、文创商品难以集中呈现，资源利用出现“冷热不均”。</p>
+          </article>
+          <article class="insight-card">
+            <span class="card-index">C</span>
+            <h3>平台侧：有沉淀、可复访</h3>
+            <p>活动结束后如果没有学习记录、评价反馈和激励机制，研学行为很容易停留在一次性参观，难以形成持续运营。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="journey">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker">02 产品方案</span>
+            <h2>用一条用户路径讲清楚平台闭环</h2>
+          </div>
+          <p class="section-note">我将原始功能重组为“发现—预约—参与—评价—激励—复访”的链路，让产品价值从功能罗列变成可理解的用户旅程。</p>
+        </div>
+        <div class="journey-layout">
+          <div class="journey" aria-label="用户路径">
+            <div class="step">
+              <span class="step-number">01</span>
+              <strong>发现基地</strong>
+              <span>按地域、热度、星级、服务筛选，也可接收推荐。</span>
+            </div>
+            <div class="step">
+              <span class="step-number">02</span>
+              <strong>查看方案</strong>
+              <span>集中查看路线、课程、活动说明与服务保障。</span>
+            </div>
+            <div class="step">
+              <span class="step-number">03</span>
+              <strong>预约活动</strong>
+              <span>选择日期，提交团队或个人信息，等待审核确认。</span>
+            </div>
+            <div class="step">
+              <span class="step-number">04</span>
+              <strong>参与研学</strong>
+              <span>完成红色基地参观、课程学习和现场活动。</span>
+            </div>
+            <div class="step">
+              <span class="step-number">05</span>
+              <strong>评价反馈</strong>
+              <span>沉淀服务评价，帮助基地优化承接质量。</span>
+            </div>
+            <div class="step">
+              <span class="step-number">06</span>
+              <strong>激励复访</strong>
+              <span>获得红星币，兑换文创商品，形成后续触达。</span>
+            </div>
+          </div>
+          <div class="journey-summary">
+            <h3>这一条路径覆盖了产品/运营最关心的 6 个环节</h3>
+            <p>前端降低用户决策成本，中台用审核和预约保障履约，后端通过评价、红星币和文创商城承接活动后的留存与转化。</p>
+            <ul class="stage-list">
+              <li><strong>获客</strong><span>基地内容、主题路线、活动专题</span></li>
+              <li><strong>转化</strong><span>详情页信息、预约入口、服务说明</span></li>
+              <li><strong>履约</strong><span>审核、确认、活动承接、服务保障</span></li>
+              <li><strong>留存</strong><span>学习记录、评价反馈、红星币兑换</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker">03 核心功能与业务价值</span>
+            <h2>不只说明“有什么”，更说明“为什么要有”</h2>
+          </div>
+          <p class="section-note">我将材料中的基地推荐、基地预约、e 路党学、文创商品、基地入驻，统一转译为用户问题和业务价值。</p>
+        </div>
+        <div class="value-grid">
+          <article class="value-card">
+            <span class="audience">研学用户 / 组织者</span>
+            <h3>基地推荐</h3>
+            <p>解决“不知道选哪个基地”的问题，通过热度、距离、星级和偏好降低筛选成本，提高预约转化。</p>
+          </article>
+          <article class="value-card">
+            <span class="audience">用户 / 基地</span>
+            <h3>基地预约</h3>
+            <p>把日期选择、信息填写、审核确认和活动报名标准化，减少线下沟通成本，提高履约效率。</p>
+          </article>
+          <article class="value-card">
+            <span class="audience">研学用户</span>
+            <h3>e 路党学</h3>
+            <p>承接活动前后的内容学习，让红色文化从一次参观延展为持续学习场景，增加内容停留。</p>
+          </article>
+          <article class="value-card">
+            <span class="audience">用户 / 基地</span>
+            <h3>文创商城</h3>
+            <p>活动完成后通过红星币和文创兑换延长互动链路，为基地提供商品展示和二次转化入口。</p>
+          </article>
+          <article class="value-card">
+            <span class="audience">基地服务方</span>
+            <h3>基地入驻</h3>
+            <p>用标准化模板帮助中小基地补齐资料、路线、活动与服务信息，扩大供给池，改善资源冷热不均。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="operation">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker">04 运营闭环设计</span>
+            <h2>围绕供给、转化、留存三步走</h2>
+          </div>
+          <p class="section-note">产品功能上线后，真正的难点是让平台持续运转。因此我把运营动作拆成供给建设、预约转化和活动后留存。</p>
+        </div>
+        <div class="ops-grid">
+          <article class="ops-card">
+            <h3>供给运营：平台先要“有什么”</h3>
+            <p>引入红色教育基地、纪念馆、博物馆等资源；为基地提供入驻模板，帮助补齐展示材料、路线介绍、活动说明和服务信息。</p>
+          </article>
+          <article class="ops-card">
+            <h3>转化运营：用户为什么“现在预约”</h3>
+            <p>设计“初心教育路线”“青年干部培训路线”“周末红色研学路线”等专题，把基地内容包装成更容易决策的活动方案。</p>
+          </article>
+          <article class="ops-card">
+            <h3>留存运营：活动结束后“还发生什么”</h3>
+            <p>通过学习记录、研学足迹、评价反馈、红星币和文创兑换，把一次性研学沉淀为持续学习和复访行为。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="metrics">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <span class="kicker">05 指标意识</span>
+            <h2>如果继续推进，我会用数据验证效果</h2>
+          </div>
+          <p class="section-note">不写没有来源的漂亮数字，而是明确每个阶段应该看什么指标，让方案从“能讲清楚”进一步变成“能验证效果”。</p>
+        </div>
+        <div class="metrics-grid">
+          <article class="metric-card">
+            <h3>供给侧</h3>
+            <p>入驻基地数、基地资料完整率、活动发布数</p>
+          </article>
+          <article class="metric-card">
+            <h3>转化侧</h3>
+            <p>详情页点击率、预约提交率、预约完成率</p>
+          </article>
+          <article class="metric-card">
+            <h3>履约侧</h3>
+            <p>活动到场率、活动完成率、服务评价率</p>
+          </article>
+          <article class="metric-card">
+            <h3>留存侧</h3>
+            <p>红星币兑换率、二次预约率、内容学习完成率</p>
+          </article>
+          <article class="metric-card">
+            <h3>平台侧</h3>
+            <p>热门路线转化率、中小基地曝光占比</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="band" id="reflection">
+      <div class="container">
+        <div class="proof-layout">
+          <div class="visual-panel">
+            <img src="assets/core-functions.png" alt="筑梦红研平台核心功能图">
+          </div>
+          <div>
+            <span class="kicker">06 我的贡献与复盘</span>
+            <h2>把团队项目材料，转化为岗位匹配的产品表达</h2>
+            <p class="section-note">这个项目最有价值的地方，不是功能数量，而是能展示我如何从角色、问题、路径、运营和指标五个角度思考一个平台。</p>
+            <div class="reflection-grid" style="margin-top: 26px;">
+              <article class="reflection-card">
+                <h3>我在项目中的产品/运营思考</h3>
+                <ul>
+                  <li>梳理研学用户、基地服务方、系统管理员等关键角色。</li>
+                  <li>从“找基地难、预约散、留存弱”拆解用户痛点。</li>
+                  <li>将基地推荐、预约报名、内容学习、文创兑换串成完整链路。</li>
+                  <li>补充平台冷启动、基地供给、预约转化和活动后留存思路。</li>
+                </ul>
+              </article>
+              <article class="reflection-card">
+                <h3>如果继续优化，我会优先做</h3>
+                <ul>
+                  <li>补充真实用户访谈，验证组织者选择基地时的核心决策因素。</li>
+                  <li>建立预约漏斗，观察从详情页浏览到预约完成的关键流失点。</li>
+                  <li>按基地类型设计专题活动，提高中小基地被发现的机会。</li>
+                  <li>用评价与复访数据验证红星币和文创兑换的留存效果。</li>
+                </ul>
+              </article>
+            </div>
+            <div class="tech-strip" aria-label="技术支撑">
+              <article class="tech-card">
+                <h3>推荐算法</h3>
+                <p>用于提升基地推荐效率，让用户更快找到匹配的研学资源。</p>
+              </article>
+              <article class="tech-card">
+                <h3>区块链记录</h3>
+                <p>用于增强文创兑换和交易记录的可信度，服务产品体验。</p>
+              </article>
+              <article class="tech-card">
+                <h3>后台管理</h3>
+                <p>支持基地入驻、活动审核、评价反馈和用户管理。</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="closing">
+    <div class="closing-inner">
+      <div>
+        <h2>项目收获</h2>
+        <p>产品设计不是把功能做全，而是明确每个功能服务于哪类用户、解决哪个环节的问题，并最终带来什么业务价值。</p>
+      </div>
+      <div class="closing-badge">用户洞察 → 产品路径 → 运营闭环</div>
+    </div>
+  </footer>
+</body>
+</html>
