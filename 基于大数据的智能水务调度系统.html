@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>水务运营调度系统 · 深蓝极智 | 产品经理作品集</title>
+    <meta name="description" content="产品经理作品集：基于大数据的水务运营调度系统——国家级大创项目，解决水务数据分散、调度依赖人工、响应滞后问题。">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* 深蓝科技风格 — 全新排版 + 冷峻光影 */
+        :root {
+            --bg-ocean: #05121c;
+            --bg-surface: #0b1f2e;
+            --bg-card: #0f2a3c;
+            --bg-card-lighter: #153a4f;
+            --primary-glow: #2aa5e0;
+            --primary-soft: #1e88e5;
+            --primary-deep: #0d5f8b;
+            --accent-teal: #2ec0b0;
+            --accent-mint: #3fcca5;
+            --text-white: #f0f9ff;
+            --text-dim: #b9d9f0;
+            --text-muted: #7e9eb5;
+            --border-dim: #1f4a6e;
+            --shadow-xl: 0 20px 35px -12px rgba(0, 0, 0, 0.6);
+            --card-radius: 28px;
+            --element-radius: 20px;
+        }
+
+        body {
+            background: var(--bg-ocean);
+            color: var(--text-white);
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* 磨砂玻璃导航 (深蓝版) */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: rgba(5, 18, 28, 0.85);
+            backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(31, 74, 110, 0.6);
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 0;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            letter-spacing: -0.3px;
+            color: var(--primary-soft);
+        }
+
+        .logo-icon {
+            background: linear-gradient(145deg, #1e88e5, #0a5580);
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            border-radius: 14px;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 12px rgba(30,136,229,0.2);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            padding: 8px 18px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .nav-links a:hover {
+            background: rgba(42, 165, 224, 0.2);
+            color: white;
+        }
+
+        /* 全域 section 样式 */
+        section {
+            padding: 80px 0;
+            border-bottom: 1px solid rgba(31, 74, 110, 0.4);
+        }
+
+        .section-header {
+            max-width: 780px;
+            margin-bottom: 52px;
+        }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            background: rgba(30, 136, 229, 0.15);
+            padding: 5px 16px;
+            border-radius: 60px;
+            color: var(--primary-soft);
+            margin-bottom: 20px;
+            border: 1px solid rgba(30, 136, 229, 0.3);
+        }
+
+        .kicker::before {
+            content: '';
+            width: 20px;
+            height: 2px;
+            background: var(--accent-teal);
+            border-radius: 2px;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            background: linear-gradient(125deg, #eef5ff, #9ac9f0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .section-sub {
+            color: var(--text-muted);
+            font-size: 1rem;
+        }
+
+        /* 玻璃质感卡片通用 */
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--card-radius);
+            padding: 28px;
+            border: 1px solid var(--border-dim);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary-soft);
+            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* 网格系统 */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+
+        .grid-auto-value {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 28px;
+        }
+
+        /* hero 区域全新排版（保留文字但布局更现代） */
+        .hero {
+            padding: 60px 0 90px;
+            position: relative;
+            background: radial-gradient(ellipse at 80% 20%, rgba(13, 95, 139, 0.25), transparent 70%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 0.9fr;
+            gap: 56px;
+            align-items: center;
+        }
+
+        .hero-title {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #ffffff, #7bc5f5);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin-bottom: 22px;
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            color: var(--text-dim);
+            border-left: 3px solid var(--accent-teal);
+            padding-left: 20px;
+            margin-bottom: 28px;
+        }
+
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 38px;
+        }
+
+        .badge {
+            background: rgba(30, 136, 229, 0.12);
+            color: var(--primary-soft);
+            padding: 6px 16px;
+            border-radius: 60px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: 1px solid rgba(30, 136, 229, 0.35);
+        }
+
+        .hero-meta {
+            display: flex;
+            gap: 28px;
+            background: rgba(15, 42, 60, 0.7);
+            backdrop-filter: blur(8px);
+            border-radius: 48px;
+            padding: 15px 28px;
+            width: fit-content;
+            border: 1px solid var(--border-dim);
+        }
+
+        .meta-item span:first-child {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .meta-item span:last-child {
+            font-weight: 700;
+            color: var(--primary-soft);
+        }
+
+        /* mockup 模拟卡片 (深色界面示意图) */
+        .mockup-card {
+            background: rgba(11, 31, 46, 0.8);
+            border-radius: 36px;
+            padding: 18px;
+            border: 1px solid var(--primary-soft);
+            box-shadow: 0 25px 40px -12px black;
+            backdrop-filter: blur(4px);
+        }
+
+        .mockup-inner {
+            background: #072435;
+            border-radius: 28px;
+            padding: 32px 16px;
+            text-align: center;
+            border: 1px solid #2a5f82;
+        }
+
+        /* step-flow 全新横条流线风格 */
+        .step-flow {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 24px;
+        }
+
+        .step-card {
+            background: var(--bg-card-lighter);
+            border-radius: var(--element-radius);
+            padding: 24px 20px;
+            border-left: 4px solid var(--accent-teal);
+            transition: all 0.2s;
+        }
+
+        .step-num {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary-soft);
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        /* 价值内卡片标签 */
+        .value-item {
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 24px;
+            border: 1px solid var(--border-dim);
+            transition: 0.2s;
+        }
+
+        .user-tag {
+            background: rgba(46, 192, 176, 0.15);
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            color: var(--accent-teal);
+            display: inline-block;
+            margin-bottom: 14px;
+        }
+
+        /* 指标卡片 */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 40px 0 20px;
+        }
+
+        .metric-card {
+            background: var(--bg-card);
+            border-radius: 24px;
+            padding: 24px 16px;
+            text-align: center;
+            border: 1px solid var(--border-dim);
+        }
+
+        .metric-card h4 {
+            color: var(--primary-soft);
+            margin-bottom: 12px;
+            font-size: 1rem;
+        }
+
+        .highlight {
+            background: rgba(11, 31, 46, 0.7);
+            border-radius: 24px;
+            padding: 28px 24px;
+            margin-top: 48px;
+            text-align: center;
+            border: 1px solid var(--border-dim);
+            backdrop-filter: blur(4px);
+        }
+
+        /* 列表 & 辅助 */
+        ul {
+            padding-left: 1.2rem;
+            color: var(--text-dim);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        li {
+            margin-bottom: 4px;
+        }
+
+        .footer {
+            background: #010a12;
+            border-top: 1px solid #1f4a6e;
+            padding: 48px 0;
+            text-align: center;
+        }
+
+        .text-muted {
+            color: var(--text-muted);
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* 响应式 */
+        @media (max-width: 900px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 36px;
+            }
+            .grid-3, .grid-2, .metrics {
+                grid-template-columns: 1fr;
+            }
+            h2 {
+                font-size: 1.9rem;
+            }
+            section {
+                padding: 56px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="container nav-inner">
+        <div class="logo">
+            <div class="logo-icon">🌊</div>
+            <span>深水智控 · 水务调度作品集</span>
+        </div>
+        <div class="nav-links">
+            <a href="#insight">洞察</a>
+            <a href="#path">产品路径</a>
+            <a href="#features">核心价值</a>
+            <a href="#operations">运营·指标</a>
+            <a href="#reflection">复盘</a>
+        </div>
+    </div>
+</nav>
+
+<header class="hero">
+    <div class="container hero-grid">
+        <div>
+            <div class="kicker">国家级大创项目 · 2024-2026落地</div>
+            <h1 class="hero-title">基于大数据的<br>水务运营调度系统</h1>
+            <p class="hero-sub">解决水务数据分散、调度依赖人工、响应滞后问题，实现全流程数字化管控与智能调度辅助</p>
+            <div class="badge-group">
+                <span class="badge">B端产品</span>
+                <span class="badge">数据产品</span>
+                <span class="badge">智慧城市</span>
+                <span class="badge">项目管理</span>
+                <span class="badge">算法产品</span>
+            </div>
+            <div class="hero-meta">
+                <div class="meta-item"><span>项目来源</span><span>大创项目(2024-2026)</span></div>
+                <div class="meta-item"><span>我的角色</span><span>项目负责人</span></div>
+                <div class="meta-item"><span>成果</span><span>软著授权</span></div>
+            </div>
+        </div>
+        <div class="mockup-card">
+            <div class="mockup-inner">
+                <div style="font-size: 2rem; font-weight: 700; color:#7bc5f5;">🗺️ 水务调度驾驶舱</div>
+                <div style="font-size:0.85rem; margin: 16px 0; color:#b0d4f0;">总地图 · 水厂 · 泵站 · 实时压力/流量</div>
+                <div style="display: flex; gap: 14px; justify-content: center; flex-wrap:wrap;">
+                    <span style="background:#0f3850; border-radius:30px; padding:6px 18px; font-size:0.7rem; font-weight:500; color:#aad4ff;">⚙️ 科学调度</span>
+                    <span style="background:#0f3850; border-radius:30px; padding:6px 18px; font-size:0.7rem; font-weight:500; color:#aad4ff;">📈 实时监测</span>
+                </div>
+                <div class="text-muted" style="font-size:0.6rem; margin-top: 22px;">示意图 · 系统界面效果</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- 1. 用户与问题洞察 (内容完全保留) -->
+    <section id="insight">
+        <div class="container">
+            <div class="section-header">
+                <div class="kicker">01 业务洞察 · 三方痛点</div>
+                <h2>传统水务管理的核心瓶颈</h2>
+            </div>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-badge" style="background:rgba(30,136,229,0.2); color:#6fc8ff; display:inline-block; padding:4px 16px; border-radius:30px; margin-bottom:18px;">💧 水务管理者 / 调度员</div>
+                    <h3 style="color:#ddf4ff;">调度依赖人工经验</h3>
+                    <p>缺乏科学决策支持，管网运行状态无法实时掌握，供水调度凭经验判断，难以应对复杂工况与突发事件。</p>
+                </div>
+                <div class="card">
+                    <div class="card-badge" style="background:rgba(30,136,229,0.2); color:#6fc8ff; display:inline-block; padding:4px 16px; border-radius:30px; margin-bottom:18px;">🔧 运维人员</div>
+                    <h3 style="color:#ddf4ff;">数据分散 & 响应滞后</h3>
+                    <p>多系统数据孤立，故障发现依赖人工巡检，预警机制缺失，导致漏检率高、维修响应慢。</p>
+                </div>
+                <div class="card">
+                    <div class="card-badge" style="background:rgba(30,136,229,0.2); color:#6fc8ff; display:inline-block; padding:4px 16px; border-radius:30px; margin-bottom:18px;">📊 决策管理层</div>
+                    <h3 style="color:#ddf4ff;">历史数据未有效利用</h3>
+                    <p>缺乏统一数据归档与回溯分析能力，无法基于历史运行记录优化调度策略，长期运维成本难以下降。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. 产品方案 & 闭环路径 (保留步骤描述全新排版) -->
+    <section id="path" style="background: rgba(5, 25, 38, 0.5);">
+        <div class="container">
+            <div class="section-header">
+                <div class="kicker">02 产品方案 · 闭环路径</div>
+                <h2>从数据采集到智能调度的全流程链路</h2>
+            </div>
+            <div class="step-flow">
+                <div class="step-card"><span class="step-num">01</span><strong style="font-size:1.1rem;">实时监测预警</strong><br><span>管网压力/流量/液位/设备状态实时感知，异常自动报警，为调度提供即时数据依据。</span></div>
+                <div class="step-card"><span class="step-num">02</span><strong style="font-size:1.1rem;">科学调度决策</strong><br><span>日常调度 / 计划调度（高峰/春节供水） / 应急调度，集成遗传算法+贪心算法辅助方案生成。</span></div>
+                <div class="step-card"><span class="step-num">03</span><strong style="font-size:1.1rem;">调度指令下达</strong><br><span>通过系统向水厂、泵站下达调度指令，跟踪执行状态，形成闭环。</span></div>
+                <div class="step-card"><span class="step-num">04</span><strong style="font-size:1.1rem;">历史数据复盘</strong><br><span>水泵参数、运行记录、监测点设置归档，支持出厂压力/流量等指标回溯分析与报表输出。</span></div>
+                <div class="step-card"><span class="step-num">05</span><strong style="font-size:1.1rem;">系统配置管理</strong><br><span>用户权限、角色管理、阈值设置，保障系统安全与个性化配置。</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. 核心功能与业务价值 (文字完全保留) -->
+    <section id="features">
+        <div class="container">
+            <div class="section-header">
+                <div class="kicker">03 核心功能 · 业务价值</div>
+                <h2>每一项功能精准对应业务痛点</h2>
+            </div>
+            <div class="grid-auto-value">
+                <div class="value-item"><span class="user-tag">调度员 / 管理者</span><h4 style="font-size:1.2rem; margin-bottom: 8px; color:#bfe6ff;">首页总览</h4><p>总地图、水厂、出水泵房、水泵、主控点实时数据展示，支持调度指令快速下达。</p><span class="text-muted" style="font-size:0.7rem;">价值：全局态势一目了然，提升决策效率</span></div>
+                <div class="value-item"><span class="user-tag">调度员 / 管理者</span><h4 style="font-size:1.2rem; margin-bottom: 8px; color:#bfe6ff;">科学调度</h4><p>日常调度、计划调度（高峰/春节供水）、历史调度、应急调度全场景覆盖。</p><span class="text-muted" style="font-size:0.7rem;">价值：告别经验决策，算法辅助优化供水方案</span></div>
+                <div class="value-item"><span class="user-tag">运维 / 调度</span><h4 style="font-size:1.2rem; margin-bottom: 8px; color:#bfe6ff;">实时监测</h4><p>当前工况实时展示，警示报警自动触发，支撑快速响应。</p><span class="text-muted" style="font-size:0.7rem;">价值：降低故障漏检率，缩短应急响应时间</span></div>
+                <div class="value-item"><span class="user-tag">决策层 / 分析人员</span><h4 style="font-size:1.2rem; margin-bottom: 8px; color:#bfe6ff;">历史数据</h4><p>水厂水泵参数、运行记录、监测点设置归档，支持出厂压力/流量等指标回溯分析。</p><span class="text-muted" style="font-size:0.7rem;">价值：为长期优化提供数据基础，赋能复盘决策</span></div>
+                <div class="value-item"><span class="user-tag">系统管理员</span><h4 style="font-size:1.2rem; margin-bottom: 8px; color:#bfe6ff;">系统管理</h4><p>个人/用户信息维护、权限安全配置，保障系统合规运行。</p><span class="text-muted" style="font-size:0.7rem;">价值：多角色权限隔离，提升系统安全性</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 运营闭环 & 指标体系 (完整保留文字及额外提示) -->
+    <section id="operations" style="background: rgba(5, 25, 38, 0.4);">
+        <div class="container">
+            <div class="section-header">
+                <div class="kicker">04 运营闭环 · 数据指标体系</div>
+                <h2>持续优化与可衡量的业务健康度</h2>
+                <p class="section-sub">基于系统特性设计的数据驱动运营策略</p>
+            </div>
+            <div class="grid-3" style="margin-bottom: 40px;">
+                <div class="card"><h3 style="color:#ddf4ff;">📡 数据采集运营</h3><p>保障物联网设备数据稳定性，监控数据缺失率，优化采集频率与协议适配。</p></div>
+                <div class="card"><h3 style="color:#ddf4ff;">⚙️ 算法调优运营</h3><p>遗传算法与贪心算法参数定期调优，对比两种算法在不同场景下的优化质量与计算速度。</p></div>
+                <div class="card"><h3 style="color:#ddf4ff;">📋 用户培训与报表输出</h3><p>定期组织调度员培训，自动生成日报/周报/月报，推送至管理层。</p></div>
+            </div>
+            <div class="metrics">
+                <div class="metric-card"><h4>📊 数据覆盖</h4><p>管网压力/流量数据覆盖率 · 设备在线率</p></div>
+                <div class="metric-card"><h4>⚡ 响应效率</h4><p>预警响应时长 · 调度方案生成耗时</p></div>
+                <div class="metric-card"><h4>🎯 优化效果</h4><p>调度成本优化率（算法对比）· 供水量满足率</p></div>
+                <div class="metric-card"><h4>📈 系统健康度</h4><p>历史数据查询响应时间 · 月活跃用户数</p></div>
+            </div>
+            <div class="highlight">
+                <p style="font-size: 0.85rem;">📌 以下指标是如果推进项目我会重点关注的，目前处于方案设计/研发阶段，尚未有实际数据。计划通过实际部署后收集运行数据，建立基准线并持续追踪优化效果。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 个人贡献与复盘 (完整内容不变) -->
+    <section id="reflection">
+        <div class="container">
+            <div class="section-header">
+                <div class="kicker">05 个人贡献 · 产品复盘</div>
+                <h2>项目负责人的产品思考与成长</h2>
+                <p class="section-sub">2年国家级大创项目全周期管理经验</p>
+            </div>
+            <div class="grid-2">
+                <div class="card">
+                    <h3 style="color:#ddf4ff;">🧠 我的产品工作</h3>
+                    <ul>
+                        <li>深入水务业务场景调研，梳理管理者、调度员、运维人员、决策层四类角色核心诉求</li>
+                        <li>将Flink+ClickHouse批流一体架构、遗传算法与贪心算法翻译为“实时监测”“智能调度辅助”等产品价值</li>
+                        <li>设计“实时监测 → 科学调度 → 指令下达 → 历史复盘 → 系统配置”完整业务闭环</li>
+                        <li>统筹项目进度、分工与里程碑，完成软件著作权申请（2024SR2173090）及结题验收</li>
+                        <li>撰写需求文档与设计方案，推动前后端开发与算法集成</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 style="color:#ddf4ff;">🔁 优化方向与反思</h3>
+                    <ul>
+                        <li>增加移动端适配，让调度员可随时随地接收预警与查看工况</li>
+                        <li>引入更丰富的可视化交互（如时间轴回放、热力地图），提升历史数据复盘体验</li>
+                        <li>完善调度方案对比功能，可直观比较遗传算法与贪心算法在不同场景下的结果差异</li>
+                        <li>建立更完善的用户反馈机制，持续迭代系统易用性</li>
+                        <li>作为项目负责人，我深刻体会到B端产品的关键在于深入理解行业业务流程，将技术能力转化为可操作、可衡量的产品功能。</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="highlight">
+                <p style="font-size: 1rem; font-weight: 600; color: #7bc5f5;">✨ “B端产品的核心不是功能堆砌，而是对行业痛点的深刻理解与流程再造。”</p>
+                <p style="margin-top: 12px; color: var(--accent-teal);">—— 从数据孤岛到智能调度，用产品思维重构水务管理闭环</p>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div style="font-weight: 400;">本作品集基于国家级大学生创新创业训练计划项目结题验收报告整理，内容均源自团队提交的正式文档。</div>
+        <div class="footnote" style="color:#6f9cbb; margin-top: 12px;">基于大数据的水务运营调度系统 · 产品经理作品集 | 软著登记号：2024SR2173090</div>
+    </div>
+</footer>
+</body>
+</html>
